@@ -10,7 +10,9 @@
         <entry key="app/src/main/res/drawable/top_rounded_layout_bg.xml" value="0.42552083333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.31567028985507245" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.31567028985507245" />
+        <entry key="app/src/main/res/layout/fragment_pokedex.xml" value="0.33589743589743587" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.409375" />
+        <entry key="app/src/main/res/layout/pokedex_pokemon_item.xml" value="0.31567028985507245" />
       </map>
     </option>
   </component>
