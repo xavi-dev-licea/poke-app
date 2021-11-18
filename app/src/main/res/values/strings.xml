@@ -12,4 +12,5 @@
     <string name="text_attack">ATTACK</string>
     <string name="text_defense">DEFENSE</string>
     <string name="text_pokedex_title">YOUR \nPOKEDEX</string>
+    <string name="text_discover_pokemons">Dicover new pokemons</string>
 </resources>
