@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">44sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
