@@ -6,4 +6,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_search_title">What Pokemon are you looking for?</string>
+    <string name="text_stats">STATS</string>
+    <string name="text_add_pokemon">Add Pokemon</string>
+    <string name="text_hp">HP</string>
+    <string name="text_attack">ATTACK</string>
+    <string name="text_defense">DEFENSE</string>
 </resources>
