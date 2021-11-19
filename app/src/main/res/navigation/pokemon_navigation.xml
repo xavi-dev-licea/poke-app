@@ -9,17 +9,29 @@
         android:id="@+id/searchFragment"
         android:name="com.xavidev.pokeapp.ui.pokemon.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/navigateToDetailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pokedexFragment"
         android:name="com.xavidev.pokeapp.ui.pokedex.PokedexFragment"
         android:label="fragment_pokedex"
-        tools:layout="@layout/fragment_pokedex" />
+        tools:layout="@layout/fragment_pokedex" >
+        <action
+            android:id="@+id/navigateToDetailsFromPokedex"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/discoveryFragment"
         android:name="com.xavidev.pokeapp.ui.discover.DiscoveryFragment"
         android:label="fragment_discovery"
-        tools:layout="@layout/fragment_discovery" />
+        tools:layout="@layout/fragment_discovery" >
+        <action
+            android:id="@+id/navigateToDetailsFromDiscover"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.xavidev.pokeapp.ui.pokemon.DetailsFragment"

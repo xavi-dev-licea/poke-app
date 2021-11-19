@@ -76,4 +76,7 @@ dependencies {
     //Livedata
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$livedata_version"
+
+    //Picasso
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 }

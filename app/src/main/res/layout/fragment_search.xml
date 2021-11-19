@@ -47,6 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/edtSearch"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="32dp"
@@ -55,7 +56,8 @@
                 android:layout_marginBottom="32dp"
                 android:hint="@string/text_search"
                 android:lines="1"
-                android:imeOptions="actionGo"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
                 android:background="@drawable/rounded_search_bg"
                 android:drawableStart="@drawable/ic_search"
                 android:drawableEnd="@drawable/ic_micro"
@@ -68,6 +70,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
+            android:id="@+id/imgNoResults"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/no_results"
