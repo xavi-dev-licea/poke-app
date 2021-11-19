@@ -1,6 +1,7 @@
 package com.xavidev.pokeapp.data.local.db
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 
 class DatabaseManager {

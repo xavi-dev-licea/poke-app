@@ -17,7 +17,7 @@ data class PokemonEntity(
     val defense: Int,
     val speed: Int,
     @ColumnInfo(name = "special-attack") val specialAttack: Int,
-    @ColumnInfo(name = "special-attack") val specialDefense: Int,
+    @ColumnInfo(name = "special-defense") val specialDefense: Int,
 )
 
 fun PokemonEntity.toPokemon() = Pokemon(
