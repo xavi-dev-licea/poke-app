@@ -1,24 +1,49 @@
 package com.xavidev.pokeapp.ui.pokemon
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.xavidev.pokeapp.R
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.xavidev.pokeapp.databinding.FragmentDetailsBinding
+import com.xavidev.pokeapp.domain.model.Pokemon
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentDetailsBinding? = null
-    private val binding: FragmentDetailsBinding get() = _binding!!
+    private lateinit var binding: FragmentDetailsBinding
+    private lateinit var viewModel: DetailsViewModel
+    private lateinit var myPokemon: Pokemon
+
+    companion object {
+        const val TAG = "DetailsFragment"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+
+        myPokemon = arguments?.getSerializable("pokemon") as Pokemon
+        binding = FragmentDetailsBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            pokemon = myPokemon
+        }
+
+        setupListeners()
+
+        dialog?.setCancelable(false)
         return binding.root
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val factory = DetailsViewModel.DetailsViewModelFactory()
+        viewModel = ViewModelProvider(this, factory).get(DetailsViewModel::class.java)
+    }
+
+    private fun setupListeners() {
+        binding.toolbar.setNavigationOnClickListener { dismiss() }
+    }
 }

@@ -1,17 +1,15 @@
 package com.xavidev.pokeapp.ui.pokemon
 
-import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
-import com.xavidev.pokeapp.R
 import com.xavidev.pokeapp.databinding.FragmentSearchBinding
 import com.xavidev.pokeapp.domain.model.Pokemon
 import com.xavidev.pokeapp.utils.Status
@@ -23,17 +21,17 @@ class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding: FragmentSearchBinding get() = _binding!!
-    private lateinit var activityContext: Activity
+    private lateinit var activityContext: Context
 
-    private lateinit var viewModel: PokemonViewModel
+    private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        val factory = PokemonViewModel.PokemonFactory()
-        viewModel = ViewModelProvider(this, factory).get(PokemonViewModel::class.java)
+        val factory = SearchViewModel.PokemonFactory()
+        viewModel = ViewModelProvider(this, factory).get(SearchViewModel::class.java)
 
         activityContext = requireActivity()
 
@@ -68,7 +66,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun navigateToDetailsFragment(pokemon: Pokemon) {
-        Navigation.findNavController(binding.root).navigate(R.id.navigateToDetailsFragment)
+        val bundle = Bundle()
+        bundle.putSerializable("pokemon", pokemon)
+        val detailsFragment = DetailsFragment()
+        detailsFragment.arguments = bundle
+        detailsFragment.show(requireActivity().supportFragmentManager, DetailsFragment.TAG)
     }
 
     private fun searchPokemonByName() {

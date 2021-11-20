@@ -12,6 +12,7 @@ data class PokemonEntity(
     val name: String,
     val number: Int,
     val image: String,
+    val type: String,
     val hp: Int,
     val attack: Int,
     val defense: Int,
@@ -21,5 +22,5 @@ data class PokemonEntity(
 )
 
 fun PokemonEntity.toPokemon() = Pokemon(
-    id, name, number, image, hp, attack, defense, speed, specialAttack, specialDefense
+    id, name, number, image, type, hp, attack, defense, speed, specialAttack, specialDefense
 )

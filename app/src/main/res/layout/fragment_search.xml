@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.xavidev.pokeapp.ui.pokemon.PokemonViewModel" />
+            type="com.xavidev.pokeapp.ui.pokemon.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

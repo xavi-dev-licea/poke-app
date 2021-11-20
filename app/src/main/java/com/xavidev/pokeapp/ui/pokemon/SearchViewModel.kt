@@ -8,7 +8,7 @@ import com.xavidev.pokeapp.data.repository.SearchRepository
 import com.xavidev.pokeapp.domain.model.Pokemon
 import com.xavidev.pokeapp.utils.Response
 
-class PokemonViewModel(private val searchRepository: SearchRepository) : ViewModel() {
+class SearchViewModel(private val searchRepository: SearchRepository) : ViewModel() {
 
     private val _pokemon = MutableLiveData<Response<Pokemon>>()
     val pokemon: LiveData<Response<Pokemon>> = _pokemon
@@ -36,8 +36,8 @@ class PokemonViewModel(private val searchRepository: SearchRepository) : ViewMod
 
     class PokemonFactory : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(PokemonViewModel::class.java)) {
-                return PokemonViewModel(
+            if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
+                return SearchViewModel(
                     searchRepository = PokemonDataSource(RetrofitBuilder.pokemonRemoteApi)
                 ) as T
             }

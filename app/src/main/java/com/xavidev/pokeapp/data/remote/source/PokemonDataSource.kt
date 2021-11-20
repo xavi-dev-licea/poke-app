@@ -13,6 +13,7 @@ class PokemonDataSource(private val pokemonServices: PokemonServices) : SearchRe
             name = pokemon.name,
             number = pokemon.id,
             image = pokemon.image.image,
+            type = pokemon.types[0].type.name,
             hp = pokemon.stats[0].baseStat,
             attack = pokemon.stats[1].baseStat,
             defense = pokemon.stats[2].baseStat,

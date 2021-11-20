@@ -13,4 +13,8 @@
     <string name="text_defense">DEFENSE</string>
     <string name="text_pokedex_title">YOUR \nPOKEDEX</string>
     <string name="text_discover_pokemons">Dicover new pokemons</string>
+    <string name="text_details">Pokemon details</string>
+    <string name="text_special_attack">SPECIAL ATTACK</string>
+    <string name="text_special_defense">SPECIAL DEFENSE</string>
+    <string name="text_speed">SPEED</string>
 </resources>
