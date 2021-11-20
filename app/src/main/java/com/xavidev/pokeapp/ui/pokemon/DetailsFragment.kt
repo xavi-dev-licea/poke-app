@@ -51,6 +51,8 @@ class DetailsFragment : BottomSheetDialogFragment() {
 
     private fun setupListeners() {
         binding.toolbar.setNavigationOnClickListener { dismiss() }
+
+        binding.imgAdd.setOnClickListener { viewModel.savePokemon(myPokemon) }
     }
 
     private fun getColorByType(name: String): Int {
