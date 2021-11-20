@@ -17,4 +17,6 @@
     <string name="text_special_attack">SPECIAL ATTACK</string>
     <string name="text_special_defense">SPECIAL DEFENSE</string>
     <string name="text_speed">SPEED</string>
+
+    <string name="number">#%1$s</string>
 </resources>

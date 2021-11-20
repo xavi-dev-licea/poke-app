@@ -8,6 +8,10 @@
         <variable
             name="pokemon"
             type="com.xavidev.pokeapp.domain.model.Pokemon" />
+
+        <variable
+            name="background"
+            type="Integer" />
     </data>
 
     <LinearLayout
@@ -15,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/electric_color"
+        android:background='@{background}'
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -49,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="@{pokemon.name}"
+                    app:capitalize="@{pokemon.name}"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -62,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="@{Integer.toString(pokemon.number)}"
+                    android:text="@{@string/number(Integer.toString(pokemon.number))}"
                     app:layout_constraintBottom_toBottomOf="@+id/txtName"
                     app:layout_constraintStart_toEndOf="@+id/txtName"
                     tools:text="#54" />
@@ -72,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/tag_bg"
-                    android:text="@{pokemon.type}"
+                    app:capitalize="@{pokemon.type}"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@+id/txtName"
                     app:layout_constraintTop_toBottomOf="@+id/txtName"
@@ -122,6 +126,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
+                        android:id="@+id/imgAdd"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="8dp"

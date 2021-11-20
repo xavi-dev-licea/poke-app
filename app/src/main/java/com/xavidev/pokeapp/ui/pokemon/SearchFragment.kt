@@ -53,7 +53,7 @@ class SearchFragment : Fragment() {
     private fun observers() {
         viewModel.pokemon.observe(viewLifecycleOwner) { response ->
             when (response.status) {
-                Status.LOADING -> activityContext.toast("Loading...")
+                Status.LOADING -> {}
                 Status.SUCCESS -> {
                     activityContext.hideKeyboard()
                     response.data?.let { pokemon ->
@@ -76,7 +76,7 @@ class SearchFragment : Fragment() {
     private fun searchPokemonByName() {
         binding.edtSearch.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                val searchString = binding.edtSearch.text.toString()
+                val searchString = binding.edtSearch.text.toString().toLowerCase()
                 lifecycleScope.launch {
                     viewModel.getPokemonByName(searchString)
                 }
