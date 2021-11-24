@@ -12,4 +12,6 @@ interface LocalRepository {
     suspend fun addPokemon(pokemon: Pokemon)
 
     suspend fun removePokemon(pokemon: Pokemon): Boolean
+
+    suspend fun getOneById(id: Int): Int
 }

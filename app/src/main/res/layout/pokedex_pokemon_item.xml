@@ -1,79 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="180dp"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:cardElevation="0dp"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/electric_color">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pokedexItem"
+    <data>
+        <variable
+            name="pokemon"
+            type="com.xavidev.pokeapp.domain.model.Pokemon" />
+
+        <variable
+            name="background"
+            type="Integer" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground">
+        android:layout_height="180dp"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@{background}"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:alpha="0.2"
-            android:src="@drawable/pokebola"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pokedexItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
 
-        <TextView
-            android:id="@+id/txtPokemon"
-            style="@style/SubtitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Pikachu" />
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:alpha="0.2"
+                android:src="@drawable/pokebola"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/tag_bg"
-            app:layout_constraintStart_toStartOf="@+id/txtPokemon"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"
-            tools:text="Electric" />
+            <TextView
+                android:id="@+id/txtPokemon"
+                style="@style/SubtitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                app:capitalize="@{pokemon.name}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Pikachu" />
 
-        <TextView
-            android:id="@+id/txtNumber"
-            style="@style/SubtitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="#35" />
+            <TextView
+                android:id="@+id/txtType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tag_bg"
+                android:text="@{pokemon.type}"
+                app:layout_constraintStart_toStartOf="@+id/txtPokemon"
+                app:layout_constraintTop_toTopOf="@+id/guideline2"
+                tools:text="Electric" />
 
-        <ImageView
-            android:id="@+id/imgPokemon"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/pokebola"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/txtNumber"
-            app:layout_constraintTop_toBottomOf="@+id/txtNumber" />
+            <TextView
+                android:id="@+id/txtNumber"
+                style="@style/SubtitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{@string/number(Integer.toString(pokemon.number))}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="#35" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imgPokemon"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/txtNumber"
+                app:layout_constraintTop_toBottomOf="@+id/txtNumber"
+                app:loadImage="@{pokemon.image}" />
 
-</com.google.android.material.card.MaterialCardView>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

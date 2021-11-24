@@ -24,4 +24,8 @@ class PokemonSource(private val pokemonDao: PokemonDao) : LocalRepository {
     override suspend fun removePokemon(pokemon: Pokemon): Boolean {
         return pokemonDao.delete(pokemon.toEntity()) == 1
     }
+
+    override suspend fun getOneById(id: Int): Int {
+        return pokemonDao.getOneById(id)
+    }
 }
