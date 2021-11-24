@@ -24,7 +24,6 @@ class DetailsFragment : BottomSheetDialogFragment() {
     }
 
     private var isPokemonAdded: Boolean = false
-    private var actionResource: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +52,6 @@ class DetailsFragment : BottomSheetDialogFragment() {
         viewModel.getOneById(myPokemon.id)
 
         setupListeners()
-
         observers()
     }
 
@@ -65,13 +63,18 @@ class DetailsFragment : BottomSheetDialogFragment() {
     private fun observers() {
         viewModel.count.observe(this) { count ->
             isPokemonAdded = count == 1
-            actionResource = if (isPokemonAdded) R.drawable.ic_remove else R.drawable.ic_add_outline
-            binding.imgAdd.setImageResource(actionResource!!)
         }
     }
 
     private fun handleAction() {
-        if (isPokemonAdded) viewModel.removePokemon(myPokemon) else viewModel.savePokemon(myPokemon)
+        val actionResource = if (isPokemonAdded) {
+            viewModel.removePokemon(myPokemon)
+            R.drawable.ic_remove
+        } else {
+            viewModel.savePokemon(myPokemon)
+            R.drawable.ic_add_outline
+        }
+        binding.imgAdd.setImageResource(actionResource)
         viewModel.getOneById(myPokemon.id)
     }
 }

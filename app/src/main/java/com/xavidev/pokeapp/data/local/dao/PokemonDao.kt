@@ -10,7 +10,7 @@ interface PokemonDao {
     @Query("SELECT * FROM $POKEMON_TABLE")
     suspend fun getAll(): List<PokemonEntity>
 
-    @Query("SELECT * FROM $POKEMON_TABLE where name =:name")
+    @Query("SELECT * FROM $POKEMON_TABLE where name LIKE :name")
     suspend fun search(name: String): List<PokemonEntity>
 
     @Query("SELECT COUNT(*) FROM pokemon where id =:id")

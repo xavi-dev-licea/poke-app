@@ -11,7 +11,7 @@ import com.xavidev.pokeapp.databinding.PokedexPokemonItemBinding
 import com.xavidev.pokeapp.domain.model.Pokemon
 import com.xavidev.pokeapp.utils.ColorUtils
 
-class PokedexAdapter(private val listener: (Pokemon, Int) -> Unit) :
+class PokedexAdapter(private val listener: (Pokemon) -> Unit) :
     ListAdapter<Pokemon, PokedexAdapter.PokedexViewHolder>(PokedexDiffCalback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokedexViewHolder {
@@ -31,12 +31,12 @@ class PokedexAdapter(private val listener: (Pokemon, Int) -> Unit) :
     inner class PokedexViewHolder(private val binding: PokedexPokemonItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Pokemon, listener: (Pokemon, Int) -> Unit) {
+        fun bind(item: Pokemon, listener: (Pokemon) -> Unit) {
             val colorId = ColorUtils.getColorByType(item.type)
             val color = ContextCompat.getColor(binding.root.context, colorId)
             binding.setVariable(BR.pokemon, item)
             binding.setVariable(BR.background, color)
-            binding.pokedexItem.setOnClickListener { listener(item, this.adapterPosition) }
+            binding.pokedexItem.setOnClickListener { listener(item) }
         }
     }
 
