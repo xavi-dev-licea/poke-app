@@ -21,6 +21,8 @@ class DetailsFragment : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "DetailsFragment"
+        const val ADD_ICON = R.drawable.ic_add_outline
+        const val REMOVE_ICON = R.drawable.ic_remove
     }
 
     private var isPokemonAdded: Boolean = false
@@ -51,8 +53,8 @@ class DetailsFragment : BottomSheetDialogFragment() {
 
         viewModel.getOneById(myPokemon.id)
 
-        setupListeners()
         observers()
+        setupListeners()
     }
 
     private fun setupListeners() {
@@ -63,18 +65,17 @@ class DetailsFragment : BottomSheetDialogFragment() {
     private fun observers() {
         viewModel.count.observe(this) { count ->
             isPokemonAdded = count == 1
+            setActionIcon()
         }
     }
 
     private fun handleAction() {
-        val actionResource = if (isPokemonAdded) {
-            viewModel.removePokemon(myPokemon)
-            R.drawable.ic_remove
-        } else {
-            viewModel.savePokemon(myPokemon)
-            R.drawable.ic_add_outline
-        }
-        binding.imgAdd.setImageResource(actionResource)
+        if (isPokemonAdded) viewModel.removePokemon(myPokemon) else viewModel.savePokemon(myPokemon)
         viewModel.getOneById(myPokemon.id)
+        setActionIcon()
+    }
+
+    private fun setActionIcon() {
+        binding.imgAdd.setImageResource(if (isPokemonAdded) REMOVE_ICON else ADD_ICON)
     }
 }
