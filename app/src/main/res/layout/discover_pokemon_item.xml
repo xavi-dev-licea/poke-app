@@ -1,50 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:layout_margin="4dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="0dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/discoveryItem"
+    <data>
+
+        <variable
+            name="pokemon"
+            type="com.xavidev.pokeapp.domain.model.Pokemon" />
+
+        <variable
+            name="background"
+            type="Integer" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="180dp"
+        android:layout_margin="4dp"
+        app:cardBackgroundColor="@{background}"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
 
-        <TextView
-            android:id="@+id/txtPokemon"
-            style="@style/SubtitleStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imgPokemon"
-            app:layout_constraintTop_toBottomOf="@+id/imgPokemon"
-            tools:text="Piokachu" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/discoveryItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imgPokemon"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:alpha="0.7"
-            android:src="@drawable/pokebola"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtPokemon"
+                style="@style/SubtitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:capitalize="@{pokemon.name}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imgPokemon"
+                app:layout_constraintTop_toBottomOf="@+id/imgPokemon"
+                tools:text="Piokachu" />
 
-        <TextView
-            android:id="@+id/txtNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imgPokemon"
-            app:layout_constraintTop_toTopOf="@+id/imgPokemon"
-            tools:text="#55" />
+            <ImageView
+                android:id="@+id/imgPokemon"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:alpha="0.7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{pokemon.image}"
+                tools:src="@drawable/pokebola" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txtNumber"
+                style="@style/SubtitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/number(Integer.toString(pokemon.number))}"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/imgPokemon"
+                app:layout_constraintTop_toTopOf="@+id/imgPokemon"
+                tools:text="#55" />
 
-</com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
